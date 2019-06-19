@@ -14,7 +14,7 @@ Citizen.CreateThread(function()
             local bedID   = Config.BedList[i]
             local distance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), bedID.objCoords.x, bedID.objCoords.y, bedID.objCoords.z, true)
             if distance < Config.MaxDistance and InAction == false then
-                ESX.Game.Utils.DrawText3D({ x = bedID.objCoords.x, y = bedID.objCoords.y, z = bedID.objCoords.z + 1 }, 'Press ~INPUT_CONTEXT~ to lay down', 0.6)
+                ESX.Game.Utils.DrawText3D({ x = bedID.objCoords.x, y = bedID.objCoords.y, z = bedID.objCoords.z + 1 }, 'Press [E] to lay down', 0.6)
                 if IsControlJustReleased(0, 38) then
                     bedActive(bedID.objCoords.x, bedID.objCoords.y, bedID.objCoords.z, bedID.heading, bedID)
                 end
@@ -37,7 +37,7 @@ function bedActive(x, y, z, heading)
             Citizen.Wait(0)
             if InAction == true then
                 headsUp('Press ~INPUT_VEH_DUCK~ to get back up')
-                if IsControlJustReleased(0, Keys['X']) then
+                if IsControlJustReleased(0, 73) then
                     ClearPedTasks(GetPlayerPed(-1))
                     FreezeEntityPosition(GetPlayerPed(-1), false)
                     SetEntityCoords(GetPlayerPed(-1), x + 1.0, y, z)
